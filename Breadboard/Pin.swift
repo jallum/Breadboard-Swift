@@ -103,9 +103,7 @@ public final class Pin<V> {
     }
     
     public func map<R>(to pin: Pin<R> = Pin(), _ convert: (V) throws -> (R)) -> Pin<R> {
-        return pin.map(from: self) { value in
-            return try convert(value)
-        }
+        return pin.map(from: self, convert)
     }
 }
 
