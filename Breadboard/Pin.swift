@@ -82,6 +82,10 @@ public final class Pin<V> {
         }
     }
     
+    public func autounwire(with block: UnwireFunc) {
+        self.unwire = block
+    }
+    
     public func map<R>(from pin: Pin<R>, _ convert: (R) throws -> (V)) -> Pin<V> {
         self.unwire = pin.wire { [weak self] value in
             if let pin = self {
