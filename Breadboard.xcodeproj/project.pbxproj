@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F9F824AF1BFA2264009B96AC /* Breadboard.h in Headers */ = {isa = PBXBuildFile; fileRef = F9F824AE1BFA2264009B96AC /* Breadboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F9F824B61BFA2264009B96AC /* Breadboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824AB1BFA2264009B96AC /* Breadboard.framework */; };
-		F9F824BB1BFA2264009B96AC /* BreadboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824BA1BFA2264009B96AC /* BreadboardTests.swift */; };
+		F9F824C61BFA2274009B96AC /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824C51BFA2274009B96AC /* Pin.swift */; };
+		F9F824C81BFA3757009B96AC /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824C71BFA3757009B96AC /* Output.swift */; };
+		F9F824CA1BFA37EF009B96AC /* Queue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824C91BFA37EF009B96AC /* Queue.framework */; };
+		F9F824CD1BFA3C99009B96AC /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824CC1BFA3C99009B96AC /* Value.swift */; };
+		F9F824CF1BFA3CB6009B96AC /* Unwireable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824CE1BFA3CB6009B96AC /* Unwireable.swift */; };
+		F9F824D41BFA4971009B96AC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824D21BFA4971009B96AC /* Nimble.framework */; };
+		F9F824D51BFA4971009B96AC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824D31BFA4971009B96AC /* Quick.framework */; };
+		F9F824D71BFA4994009B96AC /* PinSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824D61BFA4994009B96AC /* PinSpec.swift */; };
+		F9F824D81BFA4A77009B96AC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824D21BFA4971009B96AC /* Nimble.framework */; };
+		F9F824D91BFA4A77009B96AC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824D31BFA4971009B96AC /* Quick.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,13 +30,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F9F824DA1BFA4B25009B96AC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F9F824AB1BFA2264009B96AC /* Breadboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Breadboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9F824AE1BFA2264009B96AC /* Breadboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Breadboard.h; sourceTree = "<group>"; };
 		F9F824B01BFA2264009B96AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9F824B51BFA2264009B96AC /* BreadboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9F824BA1BFA2264009B96AC /* BreadboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadboardTests.swift; sourceTree = "<group>"; };
 		F9F824BC1BFA2264009B96AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9F824C51BFA2274009B96AC /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		F9F824C71BFA3757009B96AC /* Output.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
+		F9F824C91BFA37EF009B96AC /* Queue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Queue.framework; path = Carthage/Build/iOS/Queue.framework; sourceTree = "<group>"; };
+		F9F824CC1BFA3C99009B96AC /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		F9F824CE1BFA3CB6009B96AC /* Unwireable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unwireable.swift; sourceTree = "<group>"; };
+		F9F824D21BFA4971009B96AC /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		F9F824D31BFA4971009B96AC /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		F9F824D61BFA4994009B96AC /* PinSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F824CA1BFA37EF009B96AC /* Queue.framework in Frameworks */,
+				F9F824D41BFA4971009B96AC /* Nimble.framework in Frameworks */,
+				F9F824D51BFA4971009B96AC /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +73,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9F824B61BFA2264009B96AC /* Breadboard.framework in Frameworks */,
+				F9F824D81BFA4A77009B96AC /* Nimble.framework in Frameworks */,
+				F9F824D91BFA4A77009B96AC /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +86,7 @@
 			children = (
 				F9F824AD1BFA2264009B96AC /* Breadboard */,
 				F9F824B91BFA2264009B96AC /* BreadboardTests */,
+				F9F824CB1BFA37F5009B96AC /* Frameworks */,
 				F9F824AC1BFA2264009B96AC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,8 +103,11 @@
 		F9F824AD1BFA2264009B96AC /* Breadboard */ = {
 			isa = PBXGroup;
 			children = (
-				F9F824AE1BFA2264009B96AC /* Breadboard.h */,
 				F9F824B01BFA2264009B96AC /* Info.plist */,
+				F9F824C51BFA2274009B96AC /* Pin.swift */,
+				F9F824C71BFA3757009B96AC /* Output.swift */,
+				F9F824CC1BFA3C99009B96AC /* Value.swift */,
+				F9F824CE1BFA3CB6009B96AC /* Unwireable.swift */,
 			);
 			path = Breadboard;
 			sourceTree = "<group>";
@@ -80,10 +115,20 @@
 		F9F824B91BFA2264009B96AC /* BreadboardTests */ = {
 			isa = PBXGroup;
 			children = (
-				F9F824BA1BFA2264009B96AC /* BreadboardTests.swift */,
 				F9F824BC1BFA2264009B96AC /* Info.plist */,
+				F9F824D61BFA4994009B96AC /* PinSpec.swift */,
 			);
 			path = BreadboardTests;
+			sourceTree = "<group>";
+		};
+		F9F824CB1BFA37F5009B96AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9F824D21BFA4971009B96AC /* Nimble.framework */,
+				F9F824D31BFA4971009B96AC /* Quick.framework */,
+				F9F824C91BFA37EF009B96AC /* Queue.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,7 +138,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9F824AF1BFA2264009B96AC /* Breadboard.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +169,7 @@
 				F9F824B11BFA2264009B96AC /* Sources */,
 				F9F824B21BFA2264009B96AC /* Frameworks */,
 				F9F824B31BFA2264009B96AC /* Resources */,
+				F9F824DA1BFA4B25009B96AC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -194,6 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F824C81BFA3757009B96AC /* Output.swift in Sources */,
+				F9F824CF1BFA3CB6009B96AC /* Unwireable.swift in Sources */,
+				F9F824C61BFA2274009B96AC /* Pin.swift in Sources */,
+				F9F824CD1BFA3C99009B96AC /* Value.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9F824BB1BFA2264009B96AC /* BreadboardTests.swift in Sources */,
+				F9F824D71BFA4994009B96AC /* PinSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,26 +357,37 @@
 		F9F824C01BFA2264009B96AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Breadboard/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonicdesign.Breadboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		F9F824C11BFA2264009B96AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Breadboard/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -340,18 +400,29 @@
 		F9F824C31BFA2264009B96AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BreadboardTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks \"$(PROJECT_DIR)/Carthage/Build/iOS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonicdesign.BreadboardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		F9F824C41BFA2264009B96AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BreadboardTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks \"$(PROJECT_DIR)/Carthage/Build/iOS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonicdesign.BreadboardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -376,6 +447,7 @@
 				F9F824C11BFA2264009B96AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9F824C21BFA2264009B96AC /* Build configuration list for PBXNativeTarget "BreadboardTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +456,7 @@
 				F9F824C41BFA2264009B96AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
