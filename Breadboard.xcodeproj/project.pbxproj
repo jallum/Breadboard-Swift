@@ -12,8 +12,6 @@
 		F9F824C81BFA3757009B96AC /* Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824C71BFA3757009B96AC /* Tap.swift */; };
 		F9F824CA1BFA37EF009B96AC /* Queue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824C91BFA37EF009B96AC /* Queue.framework */; };
 		F9F824CD1BFA3C99009B96AC /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824CC1BFA3C99009B96AC /* Value.swift */; };
-		F9F824D41BFA4971009B96AC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824D21BFA4971009B96AC /* Nimble.framework */; };
-		F9F824D51BFA4971009B96AC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824D31BFA4971009B96AC /* Quick.framework */; };
 		F9F824D71BFA4994009B96AC /* PinSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824D61BFA4994009B96AC /* PinSpec.swift */; };
 		F9F824D81BFA4A77009B96AC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824D21BFA4971009B96AC /* Nimble.framework */; };
 		F9F824D91BFA4A77009B96AC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824D31BFA4971009B96AC /* Quick.framework */; };
@@ -61,8 +59,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9F824CA1BFA37EF009B96AC /* Queue.framework in Frameworks */,
-				F9F824D41BFA4971009B96AC /* Nimble.framework in Frameworks */,
-				F9F824D51BFA4971009B96AC /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
