@@ -35,7 +35,7 @@ class PinSpec : QuickSpec {
                             expect(s).to(equal("23"))
                         }
                         
-                        it("propagates changes to A") {
+                        it("gets changes made to A") {
                             a.set(32)
                             expect(s).to(equal("32"))
                         }
