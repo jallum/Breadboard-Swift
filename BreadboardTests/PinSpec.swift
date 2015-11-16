@@ -11,7 +11,7 @@ class PinSpec : QuickSpec {
                 let a = Pin(23)
                 
                 context("a string pin derived A, called B") {
-                    let b = a.wire {
+                    let b = a.map {
                         "\($0)"
                     }
                     

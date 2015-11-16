@@ -2,7 +2,7 @@ import Foundation
 import Queue
 
 
-public final class Tap<V>: Unwireable {
+public final class Tap<V> {
     public var value: Value<V> {
         didSet {
             OSSpinLockLock(&spinlock)
@@ -23,7 +23,7 @@ public final class Tap<V>: Unwireable {
             }
         }
     }
-    public var unwire: (()->())? {
+    private var unwire: (()->())? {
         didSet {
             if let unwire = oldValue {
                 unwire()
@@ -49,7 +49,7 @@ public final class Tap<V>: Unwireable {
     }
     
     public func wire(to pin: Pin<V>) {
-        pin.wire(to: self) { [weak self] value in
+        self.unwire = pin.wire { [weak self] value in
             self?.value = value
         }
     }

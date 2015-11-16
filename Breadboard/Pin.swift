@@ -1,7 +1,10 @@
 import Foundation
 
 
-public final class Pin<V> : Unwireable {
+public final class Pin<V> {
+    public typealias WireFunc = (Value<V>)->()
+    public typealias UnwireFunc = ()->()
+
     public var value: Value<V> {
         didSet {
             OSSpinLockLock(&spinlock)
@@ -10,12 +13,12 @@ public final class Pin<V> : Unwireable {
             OSSpinLockUnlock(&spinlock)
             
             while let this = next {
-                this.pass(value)
+                this.propagate(value)
                 next = this.next
             }
         }
     }
-    public var unwire: (()->())? {
+    private var unwire: UnwireFunc? {
         didSet {
             if let unwire = oldValue {
                 unwire()
@@ -51,13 +54,15 @@ public final class Pin<V> : Unwireable {
         self.value = .Invalid
     }
 
-    public func wire(var to object: Unwireable, pass: (Value<V>)->()) -> Self {
+    public func wire(propagate: WireFunc) -> UnwireFunc {
         OSSpinLockLock(&spinlock)
-        let wire = Wire(next: self.wires, pass: pass)
+        let wire = Wire(next: self.wires, propagate: propagate)
         self.wires = wire
         OSSpinLockUnlock(&spinlock)
         
-        object.unwire = {
+        propagate(self.value)
+        
+        return {
             OSSpinLockLock(&self.spinlock)
             if let first = self.wires {
                 if first === wire {
@@ -75,19 +80,15 @@ public final class Pin<V> : Unwireable {
             }
             OSSpinLockUnlock(&self.spinlock)
         }
-
-        pass(self.value)
-        
-        return self
     }
     
-    public func wire<R>(to pin: Pin<R> = Pin(), pass: (V) throws -> (R)) -> Pin<R> {
-        wire(to: pin) { [weak pin] value in
-            if let pin = pin {
+    public func map<R>(from pin: Pin<R>, _ convert: (R) throws -> (V)) -> Pin<V> {
+        self.unwire = pin.wire { [weak self] value in
+            if let pin = self {
                 switch value {
                 case .Valid(let valid):
                     do {
-                        pin.value = .Valid(value: try pass(valid))
+                        pin.value = .Valid(value: try convert(valid))
                     } catch (let error) {
                         pin.value = .Error(error: error)
                     }
@@ -98,18 +99,24 @@ public final class Pin<V> : Unwireable {
                 }
             }
         }
-        return pin
+        return self
+    }
+    
+    public func map<R>(to pin: Pin<R> = Pin(), _ convert: (V) throws -> (R)) -> Pin<R> {
+        return pin.map(from: self) { value in
+            return try convert(value)
+        }
     }
 }
 
 
 private final class Wire<V> {
     var next: Wire<V>?
-    let pass: (Value<V>)->()
+    let propagate: Pin<V>.WireFunc
     
-    init(next: Wire<V>?, pass: (Value<V>)->()) {
+    init(next: Wire<V>?, propagate: Pin<V>.WireFunc) {
         self.next = next
-        self.pass = pass
+        self.propagate = propagate
     }
 }
 
