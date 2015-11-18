@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F973CA5D1BFD2DA60024C812 /* Pin.map.swift in Sources */ = {isa = PBXBuildFile; fileRef = F973CA5C1BFD2DA60024C812 /* Pin.map.swift */; };
+		F973CA5F1BFD2DD50024C812 /* reduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F973CA5E1BFD2DD50024C812 /* reduce.swift */; };
+		F973CA611BFD2E6A0024C812 /* cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F973CA601BFD2E6A0024C812 /* cycle.swift */; };
+		F973CA631BFD2F010024C812 /* Pin.recover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F973CA621BFD2F010024C812 /* Pin.recover.swift */; };
 		F9F824B61BFA2264009B96AC /* Breadboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F824AB1BFA2264009B96AC /* Breadboard.framework */; };
 		F9F824C61BFA2274009B96AC /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824C51BFA2274009B96AC /* Pin.swift */; };
 		F9F824C81BFA3757009B96AC /* Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F824C71BFA3757009B96AC /* Tap.swift */; };
@@ -40,6 +44,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F973CA5C1BFD2DA60024C812 /* Pin.map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.map.swift; sourceTree = "<group>"; };
+		F973CA5E1BFD2DD50024C812 /* reduce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reduce.swift; sourceTree = "<group>"; };
+		F973CA601BFD2E6A0024C812 /* cycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cycle.swift; sourceTree = "<group>"; };
+		F973CA621BFD2F010024C812 /* Pin.recover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.recover.swift; sourceTree = "<group>"; };
 		F9F824AB1BFA2264009B96AC /* Breadboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Breadboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9F824B01BFA2264009B96AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9F824B51BFA2264009B96AC /* BreadboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreadboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,8 +107,12 @@
 			children = (
 				F9F824B01BFA2264009B96AC /* Info.plist */,
 				F9F824C51BFA2274009B96AC /* Pin.swift */,
+				F973CA5C1BFD2DA60024C812 /* Pin.map.swift */,
+				F973CA621BFD2F010024C812 /* Pin.recover.swift */,
 				F9F824C71BFA3757009B96AC /* Tap.swift */,
 				F9F824CC1BFA3C99009B96AC /* Value.swift */,
+				F973CA601BFD2E6A0024C812 /* cycle.swift */,
+				F973CA5E1BFD2DD50024C812 /* reduce.swift */,
 			);
 			path = Breadboard;
 			sourceTree = "<group>";
@@ -232,9 +244,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F973CA631BFD2F010024C812 /* Pin.recover.swift in Sources */,
+				F973CA611BFD2E6A0024C812 /* cycle.swift in Sources */,
+				F973CA5F1BFD2DD50024C812 /* reduce.swift in Sources */,
 				F9F824C81BFA3757009B96AC /* Tap.swift in Sources */,
 				F9F824C61BFA2274009B96AC /* Pin.swift in Sources */,
 				F9F824CD1BFA3C99009B96AC /* Value.swift in Sources */,
+				F973CA5D1BFD2DA60024C812 /* Pin.map.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
