@@ -4,13 +4,17 @@ import Foundation
 public final class Pin<V> {
     public typealias WireFunc = (Value<V>)->()
     public typealias UnwireFunc = ()->()
-
+    
     public var value: Value<V> {
         didSet {
             OSSpinLockLock(&spinlock)
             let value = self.value
             var next = self.wires
             OSSpinLockUnlock(&spinlock)
+            
+            if oldValue == value {
+                return
+            }
             
             while let this = next {
                 this.propagate(value)
@@ -41,11 +45,11 @@ public final class Pin<V> {
     public init(_ value: V) {
         self.value = .Valid(value: value)
     }
-
+    
     public func set(value: V) {
         self.value = .Valid(value: value)
     }
-
+    
     public func set(error: ErrorType) {
         self.value = .Error(error: error)
     }
@@ -53,7 +57,7 @@ public final class Pin<V> {
     public func unset() {
         self.value = .Invalid
     }
-
+    
     public func wire(propagate: WireFunc) -> UnwireFunc {
         OSSpinLockLock(&spinlock)
         let wire = Wire(next: self.wires, propagate: propagate)
@@ -86,21 +90,22 @@ public final class Pin<V> {
         self.unwire = block
     }
     
-    public func map<R>(from pin: Pin<R>, _ convert: (R) throws -> (V)) -> Pin<V> {
-        self.unwire = pin.wire { [weak self] value in
-            if let pin = self {
-                switch value {
-                case .Valid(let valid):
-                    do {
-                        pin.value = .Valid(value: try convert(valid))
-                    } catch (let error) {
-                        pin.value = .Error(error: error)
-                    }
-                case .Error(let error):
-                    pin.value = .Error(error: error)
-                case .Invalid:
-                    pin.value = .Invalid
+    public func map<R>(from sender: Pin<R>, _ convert: (R) throws -> (V)) -> Pin<V> {
+        self.unwire = sender.wire { [weak self] value in
+            guard let receiver = self else {
+                return
+            }
+            switch value {
+            case .Valid(let valid):
+                do {
+                    receiver.value = .Valid(value: try convert(valid))
+                } catch (let error) {
+                    receiver.value = .Error(error: error)
                 }
+            case .Error(let error):
+                receiver.value = .Error(error: error)
+            case .Invalid:
+                receiver.value = .Invalid
             }
         }
         return self
