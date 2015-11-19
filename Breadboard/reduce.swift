@@ -18,20 +18,20 @@ public func reduce<A,B,R>(a: Pin<A>, _ b: Pin<B>, block: (A,B) throws -> R) -> P
         switch (av, bv) {
         case (.Valid(let ax), .Valid(let bx)):
             do {
-                value = .Valid(value: try block(ax, bx))
+                value = .Valid(try block(ax, bx))
             } catch (let error) {
-                value = .Error(error: error)
+                value = .Error(error)
             }
         default:
             switch av {
             case .Error(let error):
-                value = .Error(error: error)
+                value = .Error(error)
             case .Invalid:
                 value = .Invalid
             default:
                 switch bv {
                 case .Error(let error):
-                    value = .Error(error: error)
+                    value = .Error(error)
                 default:
                     value = .Invalid
                 }
@@ -78,26 +78,26 @@ public func reduce<A,B,C,R>(a: Pin<A>, _ b: Pin<B>, _ c: Pin<C>, block: (A,B,C) 
         switch (av, bv, cv) {
         case (.Valid(let ax), .Valid(let bx), .Valid(let cx)):
             do {
-                value = .Valid(value: try block(ax, bx, cx))
+                value = .Valid(try block(ax, bx, cx))
             } catch (let error) {
-                value = .Error(error: error)
+                value = .Error(error)
             }
         default:
             switch av {
             case .Error(let error):
-                value = .Error(error: error)
+                value = .Error(error)
             case .Invalid:
                 value = .Invalid
             default:
                 switch bv {
                 case .Error(let error):
-                    value = .Error(error: error)
+                    value = .Error(error)
                 case .Invalid:
                     value = .Invalid
                 default:
                     switch cv {
                     case .Error(let error):
-                        value = .Error(error: error)
+                        value = .Error(error)
                     default:
                         value = .Invalid
                     }
@@ -151,32 +151,32 @@ public func reduce<A,B,C,D,R>(a: Pin<A>, _ b: Pin<B>, _ c: Pin<C>, _ d: Pin<D>, 
         switch (av, bv, cv, dv) {
         case (.Valid(let ax), .Valid(let bx), .Valid(let cx), .Valid(let dx)):
             do {
-                value = .Valid(value: try block(ax, bx, cx, dx))
+                value = .Valid(try block(ax, bx, cx, dx))
             } catch (let error) {
-                value = .Error(error: error)
+                value = .Error(error)
             }
         default:
             switch av {
             case .Error(let error):
-                value = .Error(error: error)
+                value = .Error(error)
             case .Invalid:
                 value = .Invalid
             default:
                 switch bv {
                 case .Error(let error):
-                    value = .Error(error: error)
+                    value = .Error(error)
                 case .Invalid:
                     value = .Invalid
                 default:
                     switch cv {
                     case .Error(let error):
-                        value = .Error(error: error)
+                        value = .Error(error)
                     case .Invalid:
                         value = .Invalid
                     default:
                         switch dv {
                         case .Error(let error):
-                            value = .Error(error: error)
+                            value = .Error(error)
                         default:
                             value = .Invalid
                         }

@@ -2,8 +2,8 @@ import Foundation
 
 
 public enum Value<V> : Equatable {
-    case Valid(value: V)
-    case Error(error: ErrorType)
+    case Valid(V)
+    case Error(ErrorType)
     case Invalid
 }
 

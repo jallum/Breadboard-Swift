@@ -5,23 +5,21 @@ public final class Pin<V> {
     public typealias WireFunc = (Value<V>)->()
     public typealias UnwireFunc = ()->()
     
+    private var _value: Value<V>
     public var value: Value<V> {
-        didSet {
+        get { return _value }
+        set {
             OSSpinLockLock(&spinlock)
-            let value = self.value
+            _value = newValue
             var next = self.wires
-            OSSpinLockUnlock(&spinlock)
-            
-            if oldValue == value {
-                return
-            }
-            
             while let this = next {
-                this.propagate(value)
+                this.propagate(newValue)
                 next = this.next
             }
+            OSSpinLockUnlock(&spinlock)
         }
     }
+
     private var unwire: UnwireFunc? {
         didSet {
             if let unwire = oldValue {
@@ -29,7 +27,8 @@ public final class Pin<V> {
             }
         }
     }
-    private var spinlock: OSSpinLock = OS_SPINLOCK_INIT
+    
+    private var spinlock = OS_SPINLOCK_INIT
     private var wires: Wire<V>?
     
     deinit {
@@ -39,19 +38,19 @@ public final class Pin<V> {
     }
     
     public init() {
-        self.value = .Invalid
+        _value = .Invalid
     }
     
     public init(_ value: V) {
-        self.value = .Valid(value: value)
+        _value = .Valid(value)
     }
     
     public func set(value: V) {
-        self.value = .Valid(value: value)
+        self.value = .Valid(value)
     }
     
     public func set(error: ErrorType) {
-        self.value = .Error(error: error)
+        self.value = .Error(error)
     }
     
     public func unset() {
@@ -62,9 +61,10 @@ public final class Pin<V> {
         OSSpinLockLock(&spinlock)
         let wire = Wire(next: self.wires, propagate: propagate)
         self.wires = wire
+        let value = self.value
         OSSpinLockUnlock(&spinlock)
         
-        propagate(self.value)
+        propagate(value)
         
         return {
             OSSpinLockLock(&self.spinlock)

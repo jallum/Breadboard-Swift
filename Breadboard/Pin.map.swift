@@ -1,28 +1,32 @@
 
 
 public extension Pin {
-    public func map<R>(from sender: Pin<R>, _ convert: (R) throws -> (V)) -> Pin<V> {
-        self.autounwire(with: sender.wire { [weak self] value in
+    public func map<R>(from sender: Pin<R>, _ f: (R) throws -> (V)) -> Pin<V> {
+        let unwire = sender.wire { [weak self] value in
             guard let receiver = self else {
                 return
             }
+        
             switch value {
             case .Valid(let valid):
                 do {
-                    receiver.value = .Valid(value: try convert(valid))
+                    receiver.value = .Valid(try f(valid))
                 } catch (let error) {
-                    receiver.value = .Error(error: error)
+                    receiver.value = .Error(error)
                 }
             case .Error(let error):
-                receiver.value = .Error(error: error)
+                receiver.value = .Error(error)
             case .Invalid:
                 receiver.value = .Invalid
             }
-        })
+        }
+        
+        self.autounwire(with: unwire)
+        
         return self
     }
     
-    public func map<R>(to pin: Pin<R> = Pin(), _ convert: (V) throws -> (R)) -> Pin<R> {
-        return pin.map(from: self, convert)
+    public func map<R>(to pin: Pin<R> = Pin(), _ f: (V) throws -> (R)) -> Pin<R> {
+        return pin.map(from: self, f)
     }
 }

@@ -15,9 +15,9 @@ public func cycle<V>(arrayPin: Pin<[V]>, inout next: ()->(), endOfSequenceError:
             return
         }
         if let v = generator?.next() {
-            output.value = .Valid(value: v)
+            output.value = .Valid(v)
         } else {
-            output.value = .Error(error: endOfSequenceError)
+            output.value = .Error(endOfSequenceError)
         }
     }
 
@@ -32,7 +32,7 @@ public func cycle<V>(arrayPin: Pin<[V]>, inout next: ()->(), endOfSequenceError:
         case .Invalid:
             output.value = .Invalid
         case .Error(let error):
-            output.value = .Error(error: error)
+            output.value = .Error(error)
         }
     })
     
